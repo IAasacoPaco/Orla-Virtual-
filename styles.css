@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #f8f6f0;
+    color: #2c2c2c;
+    line-height: 1.4;
+}
+
+.orla-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 25px;
+    position: relative;
+    background: linear-gradient(135deg, #f8f6f0 0%, #ede8d8 100%);
+    border: 4px solid #8b4513;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    min-height: 800px;
+}
+
+/* Decoraciones ornamentales */
+.top-decoration, .bottom-decoration {
+    position: relative;
+    height: 80px;
+    margin: 30px 0;
+    overflow: hidden;
+}
+
+.ornament-left, .ornament-right {
+    position: absolute;
+    width: 300px;
+    height: 80px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80"><defs><pattern id="ornament" x="0" y="0" width="50" height="40" patternUnits="userSpaceOnUse"><path d="M5,20 Q15,5 25,20 Q35,35 45,20" stroke="%23654321" stroke-width="1.5" fill="none"/><circle cx="15" cy="20" r="2" fill="%23654321"/><circle cx="35" cy="20" r="2" fill="%23654321"/></pattern></defs><rect width="300" height="80" fill="url(%23ornament)"/><path d="M10,40 Q50,10 90,40 Q130,70 170,40 Q210,10 250,40 Q290,70 300,40" stroke="%23654321" stroke-width="3" fill="none"/><g transform="translate(20,20)"><path d="M0,20 Q10,0 20,20 Q30,40 40,20" stroke="%23654321" stroke-width="2" fill="none"/><circle cx="10" cy="20" r="3" fill="%23654321"/><circle cx="30" cy="20" r="3" fill="%23654321"/></g><g transform="translate(240,20)"><path d="M0,20 Q10,0 20,20 Q30,40 40,20" stroke="%23654321" stroke-width="2" fill="none"/><circle cx="10" cy="20" r="3" fill="%23654321"/><circle cx="30" cy="20" r="3" fill="%23654321"/></g></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.ornament-left {
+    left: 0;
+}
+
+.ornament-right {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    position: relative;
+}
+
+.logo-left, .logo-right {
+    text-align: center;
+    width: 120px;
+}
+
+.mmd-logo-img {
+    width: 140px;
+    height: auto;
+    filter: sepia(30%) saturate(0.8) brightness(0.9);
+}
+
+.main-title {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    color: #2c2c2c;
+    letter-spacing: 3px;
+    flex: 1;
+    margin: 0 40px;
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.3);
+    position: relative;
+}
+
+.title-part {
+    display: inline-block;
+    position: relative;
+}
+
+.title-separator {
+    margin: 0 15px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Sección destacada */
+.featured-section {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.featured-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.featured-main {
+    transform: scale(1.2);
+    margin: 0 20px;
+}
+
+.quote {
+    font-size: 28px;
+    font-style: italic;
+    color: #654321;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* Grid de estudiantes */
+.students-grid {
+    margin: 40px 0;
+}
+
+.grid-row {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+/* Fila con cerebro */
+.row-with-brain {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.brain-section-left {
+    width: 280px;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.students-row-3 {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Fila 4 con texto del cerebro */
+.row-4-aligned {
+    display: flex;
+    gap: 18px;
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-bottom: 15px;
+}
+
+.brain-text-section {
+    width: 320px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 45px;
+}
+
+/* Tarjetas de estudiantes */
+.student-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+    transform: scale(1.05);
+}
+
+.student-video {
+    width: 100px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid #8b4513;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.student-video:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    border-color: #654321;
+}
+
+.student-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+    color: #2c2c2c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.brain-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.brain-image {
+    width: 160px;
+    height: 160px;
+    background-image: url('../cocomix.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter: sepia(20%) contrast(1.1);
+    margin-bottom: 10px;
+}
+
+.brain-quote {
+    font-size: 16px;
+    font-style: italic;
+    color: #654321;
+    line-height: 1.2;
+    max-width: 220px;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.edition-info-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    margin-left: 20px;
+}
+
+.edition-info-right .edition {
+    font-size: 16px;
+    color: #654321;
+    line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin: 30px 0 20px 0;
+}
+
+.year-centered {
+    font-size: 56px;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-family: 'Cinzel', serif;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Modal para video ampliado */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    animation: zoomIn 0.3s ease;
+}
+
+.close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+#modalVideo {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.modal-name {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 25px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Cinzel', serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .orla-container {
+        padding: 15px;
+    }
+    
+    .main-title {
+        font-size: 28px;
+        margin: 0 20px;
+    }
+    
+    .mmd-logo {
+        font-size: 32px;
+    }
+    
+    .featured-row {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .featured-main {
+        transform: scale(1.1);
+        margin: 10px;
+    }
+    
+    .grid-row {
+        gap: 10px;
+    }
+    
+    .student-card {
+        width: 80px;
+    }
+    
+    .student-video {
+        width: 80px;
+        height: 100px;
+    }
+    
+    .student-name {
+        font-size: 9px;
+    }
+    
+    .brain-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .brain-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .brain-quote {
+        font-size: 14px;
+        max-width: 200px;
+    }
+    
+    .year {
+        font-size: 36px;
+    }
+    
+    .edition {
+        font-size: 16px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .modal-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    
+    .student-card {
+        width: 70px;
+    }
+    
+    .student-video {
+        width: 70px;
+        height: 85px;
+    }
+    
+    .student-name {
+        font-size: 8px;
+    }
+    
+    .quote {
+        font-size: 18px;
+    }
+    
+    .brain-quote {
+        font-size: 12px;
+    }
+}
