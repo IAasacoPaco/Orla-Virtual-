@@ -3,566 +3,579 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orla Virtual - DEL ZERO AL HACK</title>
+    <title>Master AI - Del Zero al Hack - Orla Digital 2025</title>
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 30%, #2d3561 60%, #4a5d8a 100%);
-            min-height: 100vh;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Efectos de fondo */
-        body::before {
-            content: '';
+        /* Controles de audio */
+        .audio-controls {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(66, 153, 225, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-            z-index: -2;
-        }
-
-        /* Header espectacular */
-        .header {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 4px solid #4299e1;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(66, 153, 225, 0.1), transparent);
-            animation: sweep 4s ease-in-out infinite;
-        }
-
-        @keyframes sweep {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: -100%; }
-        }
-
-        .title {
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: #4299e1;
-            text-shadow: 0 0 30px rgba(66, 153, 225, 0.8);
-            margin-bottom: 20px;
-            animation: titlePulse 3s ease-in-out infinite;
-            letter-spacing: 4px;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { 
-                text-shadow: 0 0 30px rgba(66, 153, 225, 0.8);
-                transform: scale(1);
-            }
-            50% { 
-                text-shadow: 0 0 50px rgba(66, 153, 225, 1), 0 0 80px rgba(66, 153, 225, 0.6);
-                transform: scale(1.02);
-            }
-        }
-
-        .subtitle {
-            font-size: 1.8rem;
-            color: #63b3ed;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 15px;
-            animation: subtitleGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes subtitleGlow {
-            from { text-shadow: 0 0 20px rgba(99, 179, 237, 0.6); }
-            to { text-shadow: 0 0 30px rgba(99, 179, 237, 1); }
-        }
-
-        .company {
-            font-size: 1.3rem;
-            color: #cbd5e0;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        /* Container principal */
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Secciones de orla */
-        .orla-section {
-            margin-bottom: 80px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 25px;
-            padding: 50px;
-            border: 2px solid rgba(66, 153, 225, 0.2);
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .orla-section::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #4299e1, #63b3ed, #10b981, #8b5cf6, #4299e1);
-            border-radius: 25px;
-            z-index: -1;
-            opacity: 0.3;
-            animation: borderRotate 6s linear infinite;
-        }
-
-        @keyframes borderRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            padding: 25px 0;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .section-title.profesores {
-            color: #f56565;
-            text-shadow: 0 0 25px rgba(245, 101, 101, 0.8);
-        }
-
-        .section-title.ayudantes {
-            color: #ed8936;
-            text-shadow: 0 0 25px rgba(237, 137, 54, 0.8);
-        }
-
-        .section-title.alumnos {
-            color: #4299e1;
-            text-shadow: 0 0 25px rgba(66, 153, 225, 0.8);
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, currentColor, transparent);
-            animation: titleLineExpand 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleLineExpand {
-            from { width: 300px; }
-            to { width: 400px; }
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, currentColor, transparent);
-        }
-
-        /* Contenedor de Drive mejorado */
-        .drive-container {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(66, 153, 225, 0.3);
-        }
-
-        .drive-frame {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 20px;
-            background: transparent;
-            display: block;
-        }
-
-        /* Indicador de estado */
-        .status-indicator {
-            position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(16, 185, 129, 0.9);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 10;
-            animation: statusPulse 2s ease-in-out infinite;
+            z-index: 999;
+            background: rgba(139, 69, 19, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        @keyframes statusPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Instrucciones */
-        .instructions {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(66, 153, 225, 0.1));
-            border: 2px solid #10b981;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 50px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .instructions::before {
-            content: '🚀';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-            background: #0a0e1a;
-            padding: 0 15px;
-        }
-
-        .instructions h3 {
-            color: #10b981;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .instructions p {
-            color: #cbd5e0;
-            font-size: 1.2rem;
-            line-height: 1.7;
-        }
-
-        /* Controles de música */
-        .music-controls {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            border-radius: 50px;
-            padding: 20px;
-            border: 2px solid #4299e1;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            transition: all 0.3s ease;
-        }
-
-        .music-controls:hover {
-            transform: scale(1.1);
-            box-shadow: 0 20px 60px rgba(66, 153, 225, 0.4);
-        }
-
-        .music-button {
-            background: none;
+        .audio-btn {
+            background: transparent;
             border: none;
-            color: #4299e1;
-            font-size: 28px;
+            color: white;
+            font-size: 18px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 5px;
+            transition: opacity 0.3s;
         }
 
-        .music-button:hover {
-            color: #63b3ed;
-            transform: scale(1.2);
-        }
-
-        /* Partículas flotantes */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #4299e1;
-            border-radius: 50%;
-            animation: particleFloat 15s linear infinite;
+        .audio-btn:hover {
             opacity: 0.7;
         }
 
-        .particle:nth-child(2n) {
-            background: #10b981;
-            animation-duration: 20s;
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            outline: none;
+            border-radius: 2px;
         }
 
-        .particle:nth-child(3n) {
-            background: #8b5cf6;
-            animation-duration: 18s;
-        }
-
-        .particle:nth-child(4n) {
-            background: #f56565;
-            animation-duration: 12s;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .orla-section {
-                padding: 30px 20px;
-                margin-bottom: 50px;
-            }
-            
-            .drive-frame {
-                height: 450px;
-            }
-            
-            .instructions {
-                padding: 20px;
-            }
-        }
-
-        /* Animaciones de entrada */
-        .orla-section {
-            animation: slideInUp 1s ease-out;
-        }
-
-        .orla-section:nth-child(2) { animation-delay: 0.2s; }
-        .orla-section:nth-child(3) { animation-delay: 0.4s; }
-        .orla-section:nth-child(4) { animation-delay: 0.6s; }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(80px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Loading animation */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0e1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(66, 153, 225, 0.3);
-            border-top: 4px solid #4299e1;
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            background: white;
+            cursor: pointer;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <!-- Loading -->
-    <div class="loading-overlay" id="loading">
-        <div class="loading-spinner"></div>
+    <!-- Controles de audio -->
+    <div class="audio-controls">
+        <button id="audioToggle" class="audio-btn" title="Reproducir/Pausar música">🔊</button>
+        <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.1" value="0.3">
     </div>
 
-    <!-- Partículas de fondo -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Header -->
-    <div class="header">
-        <h1 class="title">DEL ZERO AL HACK</h1>
-        <div class="subtitle">ORLA VIRTUAL INTERACTIVA</div>
-        <div class="company">MAXMAXDATA SL</div>
-    </div>
-
-    <!-- Container principal -->
-    <div class="container">
-        <!-- Instrucciones -->
-        <div class="instructions">
-            <h3>SISTEMA TOTALMENTE AUTOMÁTICO</h3>
-            <p>Los archivos se cargan automáticamente desde Google Drive. Los videos se reproducen con sonido al hacer clic. Solo sube archivos a las carpetas correspondientes y aparecerán aquí.</p>
-        </div>
-
-        <!-- Profesores -->
-        <div class="orla-section">
-            <h2 class="section-title profesores">🤖 PROFESORES</h2>
-            <div class="drive-container">
-                <div class="status-indicator">LIVE</div>
-                <iframe class="drive-frame" src="https://drive.google.com/embeddedfolderview?id=1cDjYNe_dOYfyMpF6u2ROzn_bdIGACIz9#grid" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- Ayudantes -->
-        <div class="orla-section">
-            <h2 class="section-title ayudantes">🔬 AYUDANTES</h2>
-            <div class="drive-container">
-                <div class="status-indicator">LIVE</div>
-                <iframe class="drive-frame" src="https://drive.google.com/embeddedfolderview?id=1rIt8gfyJ77cM1q32jGftFpwvWzBnLL-8#grid" allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <!-- Alumnos -->
-        <div class="orla-section">
-            <h2 class="section-title alumnos">🎓 ALUMNOS</h2>
-            <div class="drive-container">
-                <div class="status-indicator">LIVE</div>
-                <iframe class="drive-frame" src="https://drive.google.com/embeddedfolderview?id=1OFB2YaBeSfPWE0NaTLMmTVE09_-ZhM2X#grid" allow="autoplay"></iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controles de música -->
-    <div class="music-controls">
-        <button class="music-button" onclick="toggleMusic()" title="Música de fondo">🎵</button>
-    </div>
-
-    <!-- Música de fondo -->
-    <audio id="backgroundMusic" loop>
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
-        <!-- Reemplaza con tu URL de música -->
+    <!-- Audio de fondo -->
+    <audio id="backgroundAudio" loop preload="auto">
+        <source src="Z2H.mp3" type="audio/mpeg">
     </audio>
 
+    <div class="orla-container">
+        <!-- Decoraciones superiores -->
+        <div class="top-decoration">
+            <div class="ornament-left"></div>
+            <div class="ornament-right"></div>
+        </div>
+
+        <!-- Header con logos y título -->
+        <header class="header">
+            <div class="logo-left">
+                <img src="mmd.png" alt="mmd maxmaxdata.com" class="mmd-logo-img">
+            </div>
+            
+            <h1 class="main-title">
+                <span class="title-part">MASTER AI</span>
+                <span class="title-separator">-</span>
+                <span class="title-part">DEL ZERO AL HACK</span>
+            </h1>
+            
+            <div class="logo-right">
+                <img src="mmd.png" alt="mmd maxmaxdata.com" class="mmd-logo-img">
+            </div>
+        </header>
+
+        <!-- Sección destacada Pablo Álvarez -->
+        <section class="featured-section">
+            <div class="featured-row">
+                <div class="student-card" data-name="marta-espiga">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/marta-espiga.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">Marta Espiga</div>
+                </div>
+                
+                <div class="student-card" data-name="gonzalo-latorre">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/gonzalo-latorre.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">Gonzalo Latorre</div>
+                </div>
+                
+                <div class="student-card featured-main" data-name="pablo-alvarez">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/pablo-alvarez.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">Pablo Álvarez</div>
+                </div>
+                
+                <div class="student-card" data-name="marti-cuenca">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/marti-cuenca.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">Martí Cuenca</div>
+                </div>
+                
+                <div class="student-card" data-name="josep-mencion">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/josep-mencion.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">Josep Mención</div>
+                </div>
+            </div>
+            
+            <div class="quote">
+                <em>"Maravilloso, maravilloso"</em>
+            </div>
+        </section>
+
+        <!-- Grid principal de estudiantes -->
+        <section class="students-grid">
+            <!-- Fila 1 -->
+            <div class="grid-row">
+                <div class="student-card" data-name="alonso-teresa">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/alonso-teresa.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">ALONSO Teresa</div>
+                </div>
+                <div class="student-card" data-name="angulo-yolanda">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/angulo-yolanda.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">ANGULO Yolanda</div>
+                </div>
+                <div class="student-card" data-name="atxutegi-ibon">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/atxutegi-ibon.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">ATXUTEGI Ibon</div>
+                </div>
+                <div class="student-card" data-name="azconaga-angelina">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/azconaga-angelina.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">AZCÓNAGA Angelina</div>
+                </div>
+                <div class="student-card" data-name="baeza-daniel">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/baeza-daniel.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">BAEZA Daniel</div>
+                </div>
+                <div class="student-card" data-name="benitez-karla">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/benitez-karla.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">BENÍTEZ Karla</div>
+                </div>
+                <div class="student-card" data-name="bilbao-inigo">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/bilbao-inigo.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">BILBAO Íñigo</div>
+                </div>
+                <div class="student-card" data-name="cortes-pepa">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/cortes-pepa.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">CORTÉS Pepa</div>
+                </div>
+                <div class="student-card" data-name="cuspinera-cesar">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/cuspinera-cesar.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">CUSPINERA César</div>
+                </div>
+                <div class="student-card" data-name="de-castro-estrella">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/de-castro-estrella.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">DE CASTRO Estrella</div>
+                </div>
+            </div>
+
+            <!-- Fila 2 -->
+            <div class="grid-row">
+                <div class="student-card" data-name="fernandez-didac">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/fernandez-didac.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">FERNÁNDEZ Dídac</div>
+                </div>
+                <div class="student-card" data-name="garcia-antonio">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/garcia-antonio.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">GARCÍA Antonio</div>
+                </div>
+                <div class="student-card" data-name="garcia-juanjo">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/garcia-juanjo.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">GARCÍA Juanjo</div>
+                </div>
+                <div class="student-card" data-name="garcia-monica">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/garcia-monica.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">GARCÍA Mónica</div>
+                </div>
+                <div class="student-card" data-name="garcia-de-blas-jesus">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/garcia-de-blas-jesus.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">GARCÍA DE BLAS Jesús</div>
+                </div>
+                <div class="student-card" data-name="gil-manuel">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/gil-manuel.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">GIL Manuel</div>
+                </div>
+                <div class="student-card" data-name="leon-rafael">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/leon-rafael.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">LEÓN Rafael</div>
+                </div>
+                <div class="student-card" data-name="lucas-jose">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/lucas-jose.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">LUCAS Mª José</div>
+                </div>
+                <div class="student-card" data-name="luz-eduardo">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/luz-eduardo.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">LUZ Eduardo</div>
+                </div>
+                <div class="student-card" data-name="marques-cristina">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/marques-cristina.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">MARQUÉS Cristina</div>
+                </div>
+            </div>
+
+            <!-- Fila 3 con cerebro y estudiantes -->
+            <div class="grid-row row-with-brain">
+                <div class="brain-section-left">
+                    <div class="brain-container">
+                        <div class="brain-image"></div>
+                    </div>
+                </div>
+                
+                <div class="students-row-3">
+                    <div class="student-card" data-name="martinez-servando">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/martinez-servando.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">MARTÍNEZ Servando</div>
+                    </div>
+                    <div class="student-card" data-name="mendizabal-ainhoa">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/mendizabal-ainhoa.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">MENDIZÁBAL Ainhoa</div>
+                    </div>
+                    <div class="student-card" data-name="mikhaylov-natalia">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/mikhaylov-natalia.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">MIKHAYLOV Natalia</div>
+                    </div>
+                    <div class="student-card" data-name="morrone-paola">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/morrone-paola.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">MORRONE Paola</div>
+                    </div>
+                    <div class="student-card" data-name="palacio-isabel">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/palacio-isabel.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">PALACIO Isabel</div>
+                    </div>
+                    <div class="student-card" data-name="perales-laura">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/perales-laura.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">PERALES Laura</div>
+                    </div>
+                    <div class="student-card" data-name="perez-paco">
+                        <video class="student-video" muted loop autoplay>
+                            <source src="videos/perez-paco.mp4" type="video/mp4">
+                        </video>
+                        <div class="student-name">PÉREZ Paco</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila 4 - perfectamente alineada -->
+            <div class="grid-row row-4-aligned">
+                <div style="width: 280px; flex-shrink: 0; display: flex; align-items: flex-start; justify-content: flex-start;">
+                    <div class="brain-quote">
+                        <em>"Una Inteligencia Artificial<br>
+                        sin propósito humano<br>
+                        es solo un algoritmo sin alma"</em>
+                    </div>
+                </div>
+                
+                <div class="student-card" data-name="robaina-adriana">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/robaina-adriana.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">ROBAINA Adriana</div>
+                </div>
+                <div class="student-card" data-name="san-inocencio-tomas">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/san-inocencio-tomas.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">SAN INOCENCIO Tomás</div>
+                </div>
+                <div class="student-card" data-name="sanchez-julio-cesar">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/sanchez-julio-cesar.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">SÁNCHEZ Julio César</div>
+                </div>
+                <div class="student-card" data-name="suarez-antonio">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/suarez-antonio.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">SUÁREZ Antonio</div>
+                </div>
+                <div class="student-card" data-name="tortosa-angel">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/tortosa-angel.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">TORTOSA Ángel</div>
+                </div>
+                <div class="student-card" data-name="zarahi-ariana">
+                    <video class="student-video" muted loop autoplay>
+                        <source src="videos/zarahi-ariana.mp4" type="video/mp4">
+                    </video>
+                    <div class="student-name">ZARAHI Ariana</div>
+                </div>
+                <div class="edition-info-right">
+                    <div class="edition">2ª edición<br>(miércoles)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="year-centered">2025</div>
+        </footer>
+
+        <!-- Decoraciones inferiores -->
+        <div class="bottom-decoration">
+            <div class="ornament-left"></div>
+            <div class="ornament-right"></div>
+        </div>
+    </div>
+
+    <!-- Modal para video ampliado -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video id="modalVideo" controls>
+                <source src="" type="video/mp4">
+            </video>
+            <div id="modalName" class="modal-name"></div>
+        </div>
+    </div>
+
     <script>
-        // Crear partículas
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 80; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        // Control de música
-        let musicPlaying = false;
-        const backgroundMusic = document.getElementById('backgroundMusic');
-
-        function toggleMusic() {
-            const button = document.querySelector('.music-button');
-            
-            if (musicPlaying) {
-                backgroundMusic.pause();
-                button.textContent = '🔇';
-                button.title = 'Activar música';
-                musicPlaying = false;
-            } else {
-                backgroundMusic.play().catch(e => {
-                    console.log('No se pudo reproducir música:', e);
-                });
-                button.textContent = '🎵';
-                button.title = 'Desactivar música';
-                musicPlaying = true;
-            }
-        }
-
-        // Ocultar loading
-        function hideLoading() {
-            const loading = document.getElementById('loading');
-            loading.style.opacity = '0';
-            setTimeout(() => {
-                loading.style.display = 'none';
-            }, 500);
-        }
-
-        // Inicializar
         document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
+            // Elementos del DOM
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const modalName = document.getElementById('modalName');
+            const closeBtn = document.querySelector('.close');
+            const studentCards = document.querySelectorAll('.student-card');
             
-            // Ocultar loading después de 2 segundos
-            setTimeout(hideLoading, 2000);
+            // Elementos de audio
+            const backgroundAudio = document.getElementById('backgroundAudio');
+            const audioToggle = document.getElementById('audioToggle');
+            const volumeSlider = document.getElementById('volumeSlider');
             
-            // Intentar reproducir música después de 3 segundos
-            setTimeout(() => {
-                backgroundMusic.play().catch(e => {
-                    console.log('Reproducción automática bloqueada');
+            // Estado del audio
+            let wasPlayingBeforeModal = false;
+            let isAudioMuted = false;
+            
+            // Configurar audio inicial
+            backgroundAudio.volume = 0.3; // Volumen bajo por defecto
+            
+            // Intentar reproducir audio automáticamente
+            function tryAutoPlay() {
+                backgroundAudio.play().then(() => {
+                    console.log('Audio iniciado automáticamente');
+                    audioToggle.textContent = '🔊';
+                }).catch(error => {
+                    console.log('Reproducción automática bloqueada, esperando interacción del usuario');
+                    audioToggle.textContent = '🔇';
+                    isAudioMuted = true;
                 });
-            }, 3000);
+            }
+            
+            // Control de reproducción/pausa
+            audioToggle.addEventListener('click', function() {
+                if (backgroundAudio.paused) {
+                    backgroundAudio.play().then(() => {
+                        audioToggle.textContent = '🔊';
+                        isAudioMuted = false;
+                    }).catch(error => {
+                        console.error('Error al reproducir audio:', error);
+                    });
+                } else {
+                    backgroundAudio.pause();
+                    audioToggle.textContent = '🔇';
+                    isAudioMuted = true;
+                }
+            });
+            
+            // Control de volumen
+            volumeSlider.addEventListener('input', function() {
+                backgroundAudio.volume = this.value;
+                if (this.value == 0) {
+                    audioToggle.textContent = '🔇';
+                } else {
+                    audioToggle.textContent = '🔊';
+                }
+            });
+            
+            // Configurar videos iniciales
+            initializeVideos();
+            
+            // Intentar reproducir audio después de un breve delay
+            setTimeout(tryAutoPlay, 1000);
+            
+            // Event listeners para las tarjetas de estudiantes
+            studentCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    openVideoModal(this);
+                });
+            });
+            
+            // Event listeners para el modal
+            closeBtn.addEventListener('click', closeVideoModal);
+            
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeVideoModal();
+                }
+            });
+            
+            // Cerrar modal con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeVideoModal();
+                }
+            });
+            
+            /**
+             * Inicializar configuración de videos
+             */
+            function initializeVideos() {
+                const videos = document.querySelectorAll('.student-video');
+                
+                videos.forEach(video => {
+                    video.muted = true;
+                    video.loop = true;
+                    video.autoplay = true;
+                    video.playsInline = true;
+                    
+                    video.play().catch(error => {
+                        console.log('Error al reproducir video:', error);
+                    });
+                });
+            }
+            
+            /**
+             * Abrir modal con video ampliado
+             */
+            function openVideoModal(card) {
+                const video = card.querySelector('.student-video');
+                const name = card.querySelector('.student-name').textContent;
+                const videoSrc = video.querySelector('source').src;
+                
+                // Guardar estado del audio y pausarlo
+                wasPlayingBeforeModal = !backgroundAudio.paused;
+                if (wasPlayingBeforeModal) {
+                    backgroundAudio.pause();
+                }
+                
+                // Configurar modal
+                modalVideo.src = videoSrc;
+                modalName.textContent = name;
+                modalVideo.muted = false;
+                modalVideo.loop = false;
+                modalVideo.controls = true;
+                modalVideo.autoplay = true;
+                
+                // Mostrar modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                // Pausar video original
+                video.pause();
+                
+                // Reproducir video del modal
+                modalVideo.play().catch(error => {
+                    console.log('Error al reproducir video en modal:', error);
+                });
+            }
+            
+            /**
+             * Cerrar modal de video
+             */
+            function closeVideoModal() {
+                // Pausar video del modal
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+                
+                // Ocultar modal
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Restaurar estado del audio
+                if (wasPlayingBeforeModal && !isAudioMuted) {
+                    backgroundAudio.play().catch(error => {
+                        console.log('Error al reanudar audio:', error);
+                    });
+                }
+                
+                // Reanudar videos originales
+                const videos = document.querySelectorAll('.student-video');
+                videos.forEach(video => {
+                    if (video.paused) {
+                        video.play().catch(error => {
+                            console.log('Error al reanudar video:', error);
+                        });
+                    }
+                });
+            }
+            
+            // Mensaje de bienvenida en consola
+            console.log('🎓 Orla Digital Master AI - Del Zero al Hack 2025');
+            console.log('🎵 Audio de fondo configurado');
+            console.log('🎹 Controles de audio disponibles');
         });
     </script>
 </body>
